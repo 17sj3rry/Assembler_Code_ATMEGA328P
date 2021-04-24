@@ -1,0 +1,39 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\Debug\Calcualdora maestra.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>Calcualdora maestra.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>Calcualdora maestra.map</FILE>
+  <FILE>Calcualdora maestra.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <LEC_FUNC><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>33</LINE></LEC_FUNC>
+  <DELAYER><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>46</LINE></DELAYER>
+  <WGLOOP0_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>53</LINE></WGLOOP0_1>
+  <WGLOOP1_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>54</LINE></WGLOOP1_1>
+  <WGLOOP2_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>55</LINE></WGLOOP2_1>
+  <MK_ADD><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>70</LINE></MK_ADD>
+  <DELAYER_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>79</LINE></DELAYER_1>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>86</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>87</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>88</LINE></WGLOOP2>
+  <SHOW_RES><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>103</LINE></SHOW_RES>
+  <MOVE><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>108</LINE></MOVE>
+  <carry><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Calcualdora maestra\Calcualdora maestra\main.asm</FILE><LINE>112</LINE></carry>
+ </LABELS>
+</ASSEMBLER_INFO>

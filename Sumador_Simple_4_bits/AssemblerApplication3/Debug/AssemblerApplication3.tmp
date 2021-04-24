@@ -1,0 +1,38 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\Debug\AssemblerApplication3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>AssemblerApplication3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>AssemblerApplication3.map</FILE>
+  <FILE>AssemblerApplication3.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <inicio><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>21</LINE></inicio>
+  <ersr><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>50</LINE></ersr>
+  <ciclo_1_a><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>55</LINE></ciclo_1_a>
+  <add_n_show_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>60</LINE></add_n_show_1>
+  <then_sen_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>66</LINE></then_sen_1>
+  <ciclo_2_a><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>71</LINE></ciclo_2_a>
+  <add_n_show_2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>77</LINE></add_n_show_2>
+  <then_sen_2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>83</LINE></then_sen_2>
+  <op_n_go><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>88</LINE></op_n_go>
+  <then_sen_3><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>94</LINE></then_sen_3>
+  <inf_show_rst><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication3\AssemblerApplication3\main.asm</FILE><LINE>99</LINE></inf_show_rst>
+ </LABELS>
+</ASSEMBLER_INFO>
