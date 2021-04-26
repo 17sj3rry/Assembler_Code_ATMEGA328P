@@ -2,166 +2,165 @@
 ; ReloJ_Binario.asm
 ;
 ; Created: 17/04/2021 02:34:42 a. m.
-; Author : pablo
+; Author : Pablo Gonzalez
 ;
 //----------------------------------------------------------------------------
-//                              CARGA DE REGISTROS
+//                              DEFINICION DE VARIABLES
 //----------------------------------------------------------------------------
 
-   .include "m328pdef.inc"
+.def minsx1 = r16	;Variable para contar minutos x 1
+.def temp0 = r17	;Variable para retardo num1
+.def temp1 = r18	;Variable para retardo num2
+.def temp2 = r19	;Variable para retardo num3
+.def regis_ldr = r20;Variable para cargar y modificar registros
+.def minsx10 = r21  ;Variable para contar minutos x 10
+.def hrsx1 = r22	;Variable para contar horas x 1
+.def hrsx10 = r23	;Variable para contar horas x 10
+.def m10_addr = r24 ;Variable para sumar un $10(0001 0000)
+.def m12_cont = r25 ;Variable para contar hasta 12 horas
+
+//----------------------------------------------------------------------------
+//                              CARGA DE VECTORES
+//----------------------------------------------------------------------------
+
    .org $00
-   rjmp inicio 
-   .org 0x36
+   jmp inicio 
 
 //----------------------------------------------------------------------------
 //             Segmento de codigo que inicializa el apuntador de stack
 //----------------------------------------------------------------------------
 
 inicio:
-	ldi r16,$FF
-	ldi r17,$08
-	out spl,r16
-	out sph,r17
+	ldi regis_ldr, high(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
+    out SPH, regis_ldr
+    ldi regis_ldr, low(RAMEND)
+    out SPL, regis_ldr 
+
 
 ;---------------------------------------------------------------------
 ;                 DECLARANDO ENTRADAS Y SALIDAS
 ;---------------------------------------------------------------------
-	cli
 
-	ldi r16,$ff
-	out ddrb,r16
-	out ddrd,r16
+	ldi regis_ldr,$ff
+	out ddrb,regis_ldr
+	out ddrc,regis_ldr
 
-	sei
+	ldi regis_ldr,$00
+	out ddrd,regis_ldr 
 
-	sbi EIMSK,2
-	
 ;---------------------------------------------------------------------
 ;                        ZONA DE CODIGO
 ;---------------------------------------------------------------------
+clr regis_ldr 
+time_adj:
+	in regis_ldr ,portd
+
+	cpi regis_ldr ,$01
+	breq adj_min
+
+	cpi regis_ldr ,$02
+	breq adj_hrs
+
+	cpi regis_ldr ,$04
+	breq adj_end
+
+	rjmp time_adj
+
+	adj_min:
+		inc minsx1
+		out portb,minsx1
+		rjmp time_adj
+
+	adj_hrs:
+		inc hrsx1
+		out portc,hrsx1
+		rjmp time_adj
+
+	adj_end:
+		rjmp pre_Strt
+
 
 borrar:
 ;------------------------------
 ; REGISTROS DE TIEMPO(CONTENO)
 ;------------------------------
 
-	clr r16
-	clr r21
-	clr r22
-	clr r23
+	clr minsx1
+	clr minsx10
+	clr hrsx1
+	clr hrsx10
 
+pre_Strt:
 ;------------------------------
 ; REGISTROS DE TIEMPO(MODIFICACION)
 ;------------------------------
 
-	ldi r24,$10
-	ldi r25,$0C ;$0C
-	out portb,r16
-	out portd,r16
+	ldi m10_addr,$10
+	ldi m12_cont,$0C ;$0C
+	out portb,minsx1
+	out portc,minsx1
 
 count_12:
 
-	cpi r25,$00
+	cpi m12_cont,$00
 	breq borrar
 
-DELAYER:
+min_delayer:
 ;---------------------------------------------------------------------
-	; ============================= 
-	; delaying 49939965 cycles:
-	; ============================= 
-			  ldi  R17, $FF
-	WGLOOP0:  ldi  R18, $FF
-	WGLOOP1:  ldi  R19, $FF
-	WGLOOP2:  dec  R19
-			  brne WGLOOP2
-			  dec  R18
-			  brne WGLOOP1
-			  dec  R17
-			  brne WGLOOP0
-	; ============================= 
-	; delaying 10060014 cycles:
-	; ============================= 
-			  ldi  R17, $83
-	WGLOOP3:  ldi  R18, $8F
-	WGLOOP4:  ldi  R19, $B2
-	WGLOOP5:  dec  R19
-			  brne WGLOOP5
-			  dec  R18
-			  brne WGLOOP4
-			  dec  R17
-			  brne WGLOOP3
+; delaying 999999 cycles:
+          ldi  temp0, $09
+WGLOOP0:  ldi  temp1, $BC
+WGLOOP1:  ldi  temp2, $C4
+WGLOOP2:  dec  temp2
+          brne WGLOOP2
+          dec  temp1
+          brne WGLOOP1
+          dec  temp0
+          brne WGLOOP0
 ;---------------------------------------------------------------------
 
 	cont_1_min:			//Contamos hasta 10 para indicar un paso de 10 minutos
 
-		in r16,portb	//Lee lo que hay en el puerto (inicialmente es cero)
-		inc r16			//Lo que hay, lo incremente en 1
-		out portb,r16	//Y lo expulsa fuera en el puerto b
-		andi r16,$0f	//Pero elimina la parte de los ultimos 4 bits 
-		cpi r16,$0A;0A	//Para checar si la primera parte suman 10
+		in minsx1,portb	//Lee lo que hay en el puerto (inicialmente es cero)
+		inc minsx1		//Lo que hay, lo incremente en 1
+		out portb,minsx1	//Y lo expulsa fuera en el puerto b
+		andi minsx1,$0f	//Pero elimina la parte de los ultimos 4 bits 
+		cpi minsx1,$0A;0A	//Para checar si la primera parte suman 10
 		brne count_12	//Si es, pasa; si no, regresa hasta que sean
 
-		clr r16			//Una vez pasa, limpia el registro
+		clr minsx1		//Una vez pasa, limpia el registro
+		out portb,minsx1
 
 	cont_10_min:
 		
-		add r21,r24		//Al registro 21, le suman $10 para incrementar los ultimos 4 bits hasta 6 ($60)
-		out portb,r21	//Expulsa el resultado por el puerto
-		cpi r21,$60;60	//Revisa si son 6 ($60)
+		add minsx10,m10_addr	//Al registro 21, le suman $10 para incrementar los ultimos 4 bits hasta 6 ($60)
+		out portb,minsx10	//Expulsa el resultado por el puerto
+		cpi minsx10,$60;60	//Revisa si son 6 ($60)
 		brne count_12	//Pasa 
 
-		clr r21			//Limpia el registro
-		out portb,r21	//Limpia el display, ahora queda en cero para mostrar el siguiente display
+		clr minsx10		//Limpia el registro
+		out portb,minsx10	//Limpia el display, ahora queda en cero para mostrar el siguiente display
 
 	cont_1_hr:
 
-		dec r25			//Decrementamos el registro 25, 12 veces
-		inc r22			//Incrementamos el registro 22 en 1
-		out portd,r22	//Sacamos el resultado por el puerto D
-		andi r22,$0f	//Pero solo leemos la parte inicial de 4 bits para checar
-		cpi r22,$0A;0A	//Comparamos si son 10($0A)
+		dec m12_cont		//Decrementamos el registro 25, 12 veces
+		inc hrsx1		//Incrementamos el registro 22 en 1
+		out portc,hrsx1	//Sacamos el resultado por el puerto D
+		andi hrsx1,$0f	//Pero solo leemos la parte inicial de 4 bits para checar
+		cpi hrsx1,$0A;0A	//Comparamos si son 10($0A)
 		brne count_12
 
-		andi r22,$00
+		clr hrsx1		//Limpia el registro
+		out portc,hrsx1	//Limpia el display, ahora queda en cero para mostrar el siguiente display
 
 	cont_10_hr:
-
-		add r23,r24
-		out portd,r23
-		cpi r23,$01;01
+		inc hrsx10
+		add hrsx10,m10_addr
+		out portc,hrsx10
+		cpi hrsx10,$02;01
 		brne count_12
 
-		andi r23,$00
-		out portd,r23
+		clr hrsx10
+		out portc,hrsx10
 
 		rjmp borrar
-
-;---------------------------------------------------------------------
-;                        BLOQUE DE INTERRUPCIONES
-;---------------------------------------------------------------------
-	ext_int0:
-
-		int_strt:
-			in r26,portc
-
-			cpi r26,$01
-			breq add_min
-
-			cpi r26,$02
-			breq add_hrs
-
-			cpi r26,$03
-			breq salir
-
-			rjmp int_strt
-
-		add_min:
-			inc r16
-			rjmp int_strt
-
-		add_hrs:
-			inc r22
-			rjmp int_strt
-
-		salir:
-			reti

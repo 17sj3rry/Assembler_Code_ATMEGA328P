@@ -10,7 +10,6 @@
  <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
-  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
   <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\Debug\ReloJ_Binario.obj</FILE>
@@ -23,24 +22,21 @@
   <FILE>ReloJ_Binario.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <inicio><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>20</LINE></inicio>
-  <borrar><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>43</LINE></borrar>
-  <count_12><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>62</LINE></count_12>
-  <DELAYER><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>67</LINE></DELAYER>
-  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>73</LINE></WGLOOP0>
-  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>74</LINE></WGLOOP1>
-  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>75</LINE></WGLOOP2>
-  <WGLOOP3><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>85</LINE></WGLOOP3>
-  <WGLOOP4><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>86</LINE></WGLOOP4>
-  <WGLOOP5><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>87</LINE></WGLOOP5>
-  <cont_1_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>95</LINE></cont_1_min>
-  <cont_10_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>106</LINE></cont_10_min>
-  <cont_1_hr><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>116</LINE></cont_1_hr>
-  <cont_10_hr><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>127</LINE></cont_10_hr>
-  <ext_int0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>142</LINE></ext_int0>
-  <int_strt><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>144</LINE></int_strt>
-  <add_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>158</LINE></add_min>
-  <add_hrs><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>162</LINE></add_hrs>
-  <salir><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>166</LINE></salir>
+  <inicio><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>33</LINE></inicio>
+  <time_adj><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>55</LINE></time_adj>
+  <adj_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>69</LINE></adj_min>
+  <adj_hrs><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>74</LINE></adj_hrs>
+  <adj_end><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>79</LINE></adj_end>
+  <pre_Strt><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>93</LINE></pre_Strt>
+  <borrar><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>83</LINE></borrar>
+  <count_12><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>103</LINE></count_12>
+  <min_delayer><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>108</LINE></min_delayer>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>112</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>113</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>114</LINE></WGLOOP2>
+  <cont_1_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>122</LINE></cont_1_min>
+  <cont_10_min><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>134</LINE></cont_10_min>
+  <cont_1_hr><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>144</LINE></cont_1_hr>
+  <cont_10_hr><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm</FILE><LINE>156</LINE></cont_10_hr>
  </LABELS>
 </ASSEMBLER_INFO>

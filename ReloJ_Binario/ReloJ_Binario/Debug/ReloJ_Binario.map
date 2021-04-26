@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm Fri Apr 23 19:22:41 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm Mon Apr 26 12:28:06 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,22 +695,29 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-CSEG inicio       00000036
-CSEG borrar       00000040
-CSEG count_12     00000048
-CSEG DELAYER      0000004a
-CSEG WGLOOP0      0000004b
-CSEG WGLOOP1      0000004c
-CSEG WGLOOP2      0000004d
-CSEG WGLOOP3      00000054
-CSEG WGLOOP4      00000055
-CSEG WGLOOP5      00000056
-CSEG cont_1_min   0000005c
-CSEG cont_10_min  00000063
-CSEG cont_1_hr    00000069
-CSEG cont_10_hr   00000070
-CSEG ext_int0     00000077
-CSEG int_strt     00000077
-CSEG add_min      0000007f
-CSEG add_hrs      00000081
-CSEG salir        00000083
+DEF  minsx1       r16
+DEF  temp0        r17
+DEF  temp1        r18
+DEF  temp2        r19
+DEF  regis_ldr    r20
+DEF  minsx10      r21
+DEF  hrsx1        r22
+DEF  hrsx10       r23
+DEF  m10_addr     r24
+DEF  m12_cont     r25
+CSEG inicio       00000002
+CSEG time_adj     0000000c
+CSEG adj_min      00000014
+CSEG adj_hrs      00000017
+CSEG adj_end      0000001a
+CSEG pre_Strt     0000001f
+CSEG borrar       0000001b
+CSEG count_12     00000023
+CSEG min_delayer  00000025
+CSEG WGLOOP0      00000026
+CSEG WGLOOP1      00000027
+CSEG WGLOOP2      00000028
+CSEG cont_1_min   0000002e
+CSEG cont_10_min  00000036
+CSEG cont_1_hr    0000003c
+CSEG cont_10_hr   00000044

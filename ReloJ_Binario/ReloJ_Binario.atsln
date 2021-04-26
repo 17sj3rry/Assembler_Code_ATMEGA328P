@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{18226A42-8477-4023-8AD2-40C49DA407C9}") = "ReloJ_Binario", "ReloJ_Binario\ReloJ_Binario.asmproj", "{59B1D629-9DCC-43ED-A0FD-8AB0E4D622AB}"
 EndProject
+Project("{18226A42-8477-4023-8AD2-40C49DA407C9}") = "AssemblerApplication1", "..\Contador_8_bits con INT\AssemblerApplication1\AssemblerApplication1.asmproj", "{47333C1B-C64A-43DF-8E46-676AFA56DBDE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -15,6 +17,10 @@ Global
 		{59B1D629-9DCC-43ED-A0FD-8AB0E4D622AB}.Debug|AVR.Build.0 = Debug|AVR
 		{59B1D629-9DCC-43ED-A0FD-8AB0E4D622AB}.Release|AVR.ActiveCfg = Release|AVR
 		{59B1D629-9DCC-43ED-A0FD-8AB0E4D622AB}.Release|AVR.Build.0 = Release|AVR
+		{47333C1B-C64A-43DF-8E46-676AFA56DBDE}.Debug|AVR.ActiveCfg = Debug|AVR
+		{47333C1B-C64A-43DF-8E46-676AFA56DBDE}.Debug|AVR.Build.0 = Debug|AVR
+		{47333C1B-C64A-43DF-8E46-676AFA56DBDE}.Release|AVR.ActiveCfg = Release|AVR
+		{47333C1B-C64A-43DF-8E46-676AFA56DBDE}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

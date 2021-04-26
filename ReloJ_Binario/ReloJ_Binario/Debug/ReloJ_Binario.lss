@@ -1,10 +1,8 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm Fri Apr 23 19:22:41 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm Mon Apr 26 12:28:06 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
-C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
-C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm(11): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc'
                                  
                                  ;
                                  
@@ -990,211 +988,168 @@ C:\Users\pablo\Documents\Atmel Studio\7.0\ReloJ_Binario\ReloJ_Binario\main.asm(1
                                  ; ReloJ_Binario.asm
                                  ;
                                  ; Created: 17/04/2021 02:34:42 a. m.
-                                 ; Author : pablo
+                                 ; Author : Pablo Gonzalez
                                  ;
                                  //----------------------------------------------------------------------------
-                                 //                              CARGA DE REGISTROS
+                                 //                              DEFINICION DE VARIABLES
                                  //----------------------------------------------------------------------------
                                  
-                                    .include "m328pdef.inc"
+                                 .def minsx1 = r16	;Variable para contar minutos x 1
+                                 .def temp0 = r17	;Variable para retardo num1
+                                 .def temp1 = r18	;Variable para retardo num2
+                                 .def temp2 = r19	;Variable para retardo num3
+                                 .def regis_ldr = r20;Variable para cargar y modificar registros
+                                 .def minsx10 = r21  ;Variable para contar minutos x 10
+                                 .def hrsx1 = r22	;Variable para contar horas x 1
+                                 .def hrsx10 = r23	;Variable para contar horas x 10
+                                 .def m10_addr = r24 ;Variable para sumar un $10(0001 0000)
+                                 .def m12_cont = r25 ;Variable para contar hasta 12 horas
                                  
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
-                                 ;*************************************************************************
-                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
-                                 ;* 
-                                 ;* Number            : AVR000
-                                 ;* File Name         : "m328Pdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega328P
-                                 ;* Date              : 2011-02-09
-                                 ;* Version           : 2.35
-                                 ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega328P
-                                 ;* 
-                                 ;* DESCRIPTION
-                                 ;* When including this file in the assembly program file, all I/O register 
-                                 ;* names and I/O register bit names appearing in the data book can be used.
-                                 ;* In addition, the six registers forming the three data pointers X, Y and 
-                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
-                                 ;* SRAM is also defined 
-                                 ;* 
-                                 ;* The Register names are represented by their hexadecimal address.
-                                 ;* 
-                                 ;* The Register Bit names are represented by their bit number (0-7).
-                                 ;* 
-                                 ;* Please observe the difference in using the bit names with instructions
-                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
-                                 ;* (skip if bit in register set/cleared). The following example illustrates
-                                 ;* this:
-                                 ;* 
-                                 ;* in    r16,PORTB             ;read PORTB latch
-                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
-                                 ;* out   PORTB,r16             ;output to PORTB
-                                 ;* 
-                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
-                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
-                                 ;* rjmp  TOV0_is_set           ;jump if set
-                                 ;* ...                         ;otherwise do something else
-                                 ;*************************************************************************
+                                 //----------------------------------------------------------------------------
+                                 //                              CARGA DE VECTORES
+                                 //----------------------------------------------------------------------------
                                  
-                                 #ifndef _M328PDEF_INC_
-                                 #endif  /* _M328PDEF_INC_ */
-                                 
-                                 ; ***** END OF FILE ******************************************************
                                     .org $00
-000000 c035                         rjmp inicio 
-                                    .org 0x36
+000000 940c 0002                    jmp inicio 
                                  
                                  //----------------------------------------------------------------------------
                                  //             Segmento de codigo que inicializa el apuntador de stack
                                  //----------------------------------------------------------------------------
                                  
                                  inicio:
-000036 ef0f                      	ldi r16,$FF
-000037 e018                      	ldi r17,$08
-000038 bf0d                      	out spl,r16
-000039 bf1e                      	out sph,r17
+000002 e048                      	ldi regis_ldr, high(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
+000003 bf4e                          out SPH, regis_ldr
+000004 ef4f                          ldi regis_ldr, low(RAMEND)
+000005 bf4d                          out SPL, regis_ldr 
+                                 
                                  
                                  ;---------------------------------------------------------------------
                                  ;                 DECLARANDO ENTRADAS Y SALIDAS
                                  ;---------------------------------------------------------------------
-00003a 94f8                      	cli
                                  
-00003b ef0f                      	ldi r16,$ff
-00003c b904                      	out ddrb,r16
-00003d b90a                      	out ddrd,r16
+000006 ef4f                      	ldi regis_ldr,$ff
+000007 b944                      	out ddrb,regis_ldr
+000008 b947                      	out ddrc,regis_ldr
                                  
-00003e 9478                      	sei
+000009 e040                      	ldi regis_ldr,$00
+00000a b94a                      	out ddrd,regis_ldr 
                                  
-00003f 9aea                      	sbi EIMSK,2
-                                 	
                                  ;---------------------------------------------------------------------
                                  ;                        ZONA DE CODIGO
                                  ;---------------------------------------------------------------------
+00000b 2744                      clr regis_ldr 
+                                 time_adj:
+00000c b14b                      	in regis_ldr ,portd
+                                 
+00000d 3041                      	cpi regis_ldr ,$01
+00000e f029                      	breq adj_min
+                                 
+00000f 3042                      	cpi regis_ldr ,$02
+000010 f031                      	breq adj_hrs
+                                 
+000011 3044                      	cpi regis_ldr ,$04
+000012 f039                      	breq adj_end
+                                 
+000013 cff8                      	rjmp time_adj
+                                 
+                                 	adj_min:
+000014 9503                      		inc minsx1
+000015 b905                      		out portb,minsx1
+000016 cff5                      		rjmp time_adj
+                                 
+                                 	adj_hrs:
+000017 9563                      		inc hrsx1
+000018 b968                      		out portc,hrsx1
+000019 cff2                      		rjmp time_adj
+                                 
+                                 	adj_end:
+00001a c004                      		rjmp pre_Strt
+                                 
                                  
                                  borrar:
                                  ;------------------------------
                                  ; REGISTROS DE TIEMPO(CONTENO)
                                  ;------------------------------
                                  
-000040 2700                      	clr r16
-000041 2755                      	clr r21
-000042 2766                      	clr r22
-000043 2777                      	clr r23
+00001b 2700                      	clr minsx1
+00001c 2755                      	clr minsx10
+00001d 2766                      	clr hrsx1
+00001e 2777                      	clr hrsx10
                                  
+                                 pre_Strt:
                                  ;------------------------------
                                  ; REGISTROS DE TIEMPO(MODIFICACION)
                                  ;------------------------------
                                  
-000044 e180                      	ldi r24,$10
-000045 e09c                      	ldi r25,$0C ;$0C
-000046 b905                      	out portb,r16
-000047 b90b                      	out portd,r16
+00001f e180                      	ldi m10_addr,$10
+000020 e09c                      	ldi m12_cont,$0C ;$0C
+000021 b905                      	out portb,minsx1
+000022 b908                      	out portc,minsx1
                                  
                                  count_12:
                                  
-000048 3090                      	cpi r25,$00
-000049 f3b1                      	breq borrar
+000023 3090                      	cpi m12_cont,$00
+000024 f3b1                      	breq borrar
                                  
-                                 DELAYER:
+                                 min_delayer:
                                  ;---------------------------------------------------------------------
-                                 	; ============================= 
-                                 	; delaying 49939965 cycles:
-                                 	; ============================= 
-00004a ef1f                      			  ldi  R17, $FF
-00004b ef2f                      	WGLOOP0:  ldi  R18, $FF
-00004c ef3f                      	WGLOOP1:  ldi  R19, $FF
-00004d 953a                      	WGLOOP2:  dec  R19
-00004e f7f1                      			  brne WGLOOP2
-00004f 952a                      			  dec  R18
-000050 f7d9                      			  brne WGLOOP1
-000051 951a                      			  dec  R17
-000052 f7c1                      			  brne WGLOOP0
-                                 	; ============================= 
-                                 	; delaying 10060014 cycles:
-                                 	; ============================= 
-000053 e813                      			  ldi  R17, $83
-000054 e82f                      	WGLOOP3:  ldi  R18, $8F
-000055 eb32                      	WGLOOP4:  ldi  R19, $B2
-000056 953a                      	WGLOOP5:  dec  R19
-000057 f7f1                      			  brne WGLOOP5
-000058 952a                      			  dec  R18
-000059 f7d9                      			  brne WGLOOP4
-00005a 951a                      			  dec  R17
-00005b f7c1                      			  brne WGLOOP3
+                                 ; delaying 999999 cycles:
+000025 e019                                ldi  temp0, $09
+000026 eb2c                      WGLOOP0:  ldi  temp1, $BC
+000027 ec34                      WGLOOP1:  ldi  temp2, $C4
+000028 953a                      WGLOOP2:  dec  temp2
+000029 f7f1                                brne WGLOOP2
+00002a 952a                                dec  temp1
+00002b f7d9                                brne WGLOOP1
+00002c 951a                                dec  temp0
+00002d f7c1                                brne WGLOOP0
                                  ;---------------------------------------------------------------------
                                  
                                  	cont_1_min:			//Contamos hasta 10 para indicar un paso de 10 minutos
                                  
-00005c b105                      		in r16,portb	//Lee lo que hay en el puerto (inicialmente es cero)
-00005d 9503                      		inc r16			//Lo que hay, lo incremente en 1
-00005e b905                      		out portb,r16	//Y lo expulsa fuera en el puerto b
-00005f 700f                      		andi r16,$0f	//Pero elimina la parte de los ultimos 4 bits 
-000060 300a                      		cpi r16,$0A;0A	//Para checar si la primera parte suman 10
-000061 f731                      		brne count_12	//Si es, pasa; si no, regresa hasta que sean
+00002e b105                      		in minsx1,portb	//Lee lo que hay en el puerto (inicialmente es cero)
+00002f 9503                      		inc minsx1		//Lo que hay, lo incremente en 1
+000030 b905                      		out portb,minsx1	//Y lo expulsa fuera en el puerto b
+000031 700f                      		andi minsx1,$0f	//Pero elimina la parte de los ultimos 4 bits 
+000032 300a                      		cpi minsx1,$0A;0A	//Para checar si la primera parte suman 10
+000033 f779                      		brne count_12	//Si es, pasa; si no, regresa hasta que sean
                                  
-000062 2700                      		clr r16			//Una vez pasa, limpia el registro
+000034 2700                      		clr minsx1		//Una vez pasa, limpia el registro
+000035 b905                      		out portb,minsx1
                                  
                                  	cont_10_min:
                                  		
-000063 0f58                      		add r21,r24		//Al registro 21, le suman $10 para incrementar los ultimos 4 bits hasta 6 ($60)
-000064 b955                      		out portb,r21	//Expulsa el resultado por el puerto
-000065 3650                      		cpi r21,$60;60	//Revisa si son 6 ($60)
-000066 f709                      		brne count_12	//Pasa 
+000036 0f58                      		add minsx10,m10_addr	//Al registro 21, le suman $10 para incrementar los ultimos 4 bits hasta 6 ($60)
+000037 b955                      		out portb,minsx10	//Expulsa el resultado por el puerto
+000038 3650                      		cpi minsx10,$60;60	//Revisa si son 6 ($60)
+000039 f749                      		brne count_12	//Pasa 
                                  
-000067 2755                      		clr r21			//Limpia el registro
-000068 b955                      		out portb,r21	//Limpia el display, ahora queda en cero para mostrar el siguiente display
+00003a 2755                      		clr minsx10		//Limpia el registro
+00003b b955                      		out portb,minsx10	//Limpia el display, ahora queda en cero para mostrar el siguiente display
                                  
                                  	cont_1_hr:
                                  
-000069 959a                      		dec r25			//Decrementamos el registro 25, 12 veces
-00006a 9563                      		inc r22			//Incrementamos el registro 22 en 1
-00006b b96b                      		out portd,r22	//Sacamos el resultado por el puerto D
-00006c 706f                      		andi r22,$0f	//Pero solo leemos la parte inicial de 4 bits para checar
-00006d 306a                      		cpi r22,$0A;0A	//Comparamos si son 10($0A)
-00006e f6c9                      		brne count_12
+00003c 959a                      		dec m12_cont		//Decrementamos el registro 25, 12 veces
+00003d 9563                      		inc hrsx1		//Incrementamos el registro 22 en 1
+00003e b968                      		out portc,hrsx1	//Sacamos el resultado por el puerto D
+00003f 706f                      		andi hrsx1,$0f	//Pero solo leemos la parte inicial de 4 bits para checar
+000040 306a                      		cpi hrsx1,$0A;0A	//Comparamos si son 10($0A)
+000041 f709                      		brne count_12
                                  
-00006f 7060                      		andi r22,$00
+000042 2766                      		clr hrsx1		//Limpia el registro
+000043 b968                      		out portc,hrsx1	//Limpia el display, ahora queda en cero para mostrar el siguiente display
                                  
                                  	cont_10_hr:
+000044 9573                      		inc hrsx10
+000045 0f78                      		add hrsx10,m10_addr
+000046 b978                      		out portc,hrsx10
+000047 3072                      		cpi hrsx10,$02;01
+000048 f6d1                      		brne count_12
                                  
-000070 0f78                      		add r23,r24
-000071 b97b                      		out portd,r23
-000072 3071                      		cpi r23,$01;01
-000073 f6a1                      		brne count_12
+000049 2777                      		clr hrsx10
+00004a b978                      		out portc,hrsx10
                                  
-000074 7070                      		andi r23,$00
-000075 b97b                      		out portd,r23
-                                 
-000076 cfc9                      		rjmp borrar
-                                 
-                                 ;---------------------------------------------------------------------
-                                 ;                        BLOQUE DE INTERRUPCIONES
-                                 ;---------------------------------------------------------------------
-                                 	ext_int0:
-                                 
-                                 		int_strt:
-000077 b1a8                      			in r26,portc
-                                 
-000078 30a1                      			cpi r26,$01
-000079 f029                      			breq add_min
-                                 
-00007a 30a2                      			cpi r26,$02
-00007b f029                      			breq add_hrs
-                                 
-00007c 30a3                      			cpi r26,$03
-00007d f029                      			breq salir
-                                 
-00007e cff8                      			rjmp int_strt
-                                 
-                                 		add_min:
-00007f 9503                      			inc r16
-000080 cff6                      			rjmp int_strt
-                                 
-                                 		add_hrs:
-000081 9563                      			inc r22
-000082 cff4                      			rjmp int_strt
-                                 
-                                 		salir:
+00004b cfcf                      		rjmp borrar
 
 
 RESOURCE USE INFORMATION
@@ -1214,37 +1169,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  15 r17:   6 r18:   4 r19:   4 r20:   0 
-r21:   6 r22:   7 r23:   6 r24:   3 r25:   3 r26:   4 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  12 r17:   2 r18:   2 r19:   2 r20:  14 
+r21:   6 r22:   9 r23:   7 r24:   3 r25:   3 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 10 out of 35 (28.6%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
-andi  :   4 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+andi  :   2 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   4 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :  10 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   7 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   1 cln   :   0 clr   :   6 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   9 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   8 cpse  :   0 dec   :   7 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   4 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :  11 lds   :   0 lpm   :   0 lsl   :   0 
+cpi   :   8 cpse  :   0 dec   :   4 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   5 jmp   :   1 
+ld    :   0 ldd   :   0 ldi   :   9 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  12 pop   :   0 
-push  :   0 rcall :   0 ret   :   0 reti  :   1 rjmp  :   5 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  17 pop   :   0 
+push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   5 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
-sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
+sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 16 out of 113 (14.2%)
+Instructions used: 13 out of 113 (11.5%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000108    158      0    158   32768   0.5%
+[.cseg] 0x000000 0x000098    152      0    152   32768   0.5%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
