@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Sun Apr 25 12:03:55 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm Sun Apr 25 20:03:16 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -695,8 +695,13 @@ EQU  ACIaddr      0000002e
 EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
-DEF  temp0        r16
-CSEG SETUP        00000034
-CSEG COUNT        00000046
-CSEG DECOUNT      00000048
-CSEG ciclo        00000044
+DEF  register     r16
+DEF  num          r17
+CSEG SETUP        00000006
+CSEG COUNT        00000016
+CSEG DECOUNT      00000019
+CSEG main         00000014
+CSEG retardo      0000001c
+CSEG WGLOOP0      0000001d
+CSEG WGLOOP1      0000001e
+CSEG WGLOOP2      0000001f

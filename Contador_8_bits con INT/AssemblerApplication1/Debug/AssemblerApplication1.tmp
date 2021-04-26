@@ -1,19 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
-  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
+  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>AssemblerApplication1.hex</FILE>
@@ -23,9 +22,13 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>25</LINE></SETUP>
-  <COUNT><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>48</LINE></COUNT>
-  <DECOUNT><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>52</LINE></DECOUNT>
-  <ciclo><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>44</LINE></ciclo>
+  <SETUP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>21</LINE></SETUP>
+  <COUNT><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>45</LINE></COUNT>
+  <DECOUNT><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>50</LINE></DECOUNT>
+  <main><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>41</LINE></main>
+  <retardo><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>55</LINE></retardo>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>59</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>60</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm</FILE><LINE>61</LINE></WGLOOP2>
  </LABELS>
 </ASSEMBLER_INFO>

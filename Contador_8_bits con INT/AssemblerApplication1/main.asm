@@ -1,57 +1,69 @@
-.include "m328pdef.inc"
-
 ;-----------------------------------------------------------------------------
-;PARTE A(1):
-.def temp0 = R16	;Definimos una variable para almacenar nuestra informacion global
-
 ;-----------------------------------------------------------------------------
-
+.def register = r16
+.def num = r17
 ;-----------------------------------------------------------------------------
 ;PARTE B(1):
 .org $00
-            jmp SETUP	;Vamos a declarar una primera direccion a donde el programa vaya para la ejecuccion
-			;Continua hasta la parte C(1).
+ jmp SETUP	;Vamos a declarar una primera direccion a donde el programa vaya para la ejecuccion
+						;Continua hasta la parte C(1).
 ;-----------------------------------------------------------------------------
 ;PARTE B(2):
-.org $02
-            jmp COUNT	;Nos mandara aqui, y de aqui, saltamos al proceso count
+.org $02	;Cuando presionamos la interrupciones, nos envia aqui, para leer el vector de direcciones y decidir hacia que instruccion irse
+jmp COUNT	;Nos mandara aqui, y de aqui, saltamos al proceso count...Ve a PARTE C(3)
+
 .org $04
-            jmp DECOUNT ; o nos vamos al proceso de decount
-.org $34	;ignora esto y regresa a C(2)
+jmp DECOUNT ; o nos vamos al proceso de decount
 ;-----------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------
 ;PARTE C(1):
-SETUP:      ldi temp0, low(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
-            out SPL, temp0
-            ldi temp0, high(RAMEND)
-            out SPH, temp0      
+SETUP:      ldi register, high(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
+            out SPH, register
+            ldi register, low(RAMEND)
+            out SPL, register    
 
-			out ddrb,temp0	;En esta parte configuramos los puertos, aqui declaramos como entrada el puerto B
-			ldi temp0,$0C	;Pero cargamos un 12($0c) para los botones de interrupticones
-			out ddrb,temp0	;le enviamos esta informacion al puerto D
-			out portd,temp0	;y configuramos en alto los mismos
+			ldi register,$FF			;Vamos a configurar el puerto B como salida de datos, enviando 0XFF($FF)
+			out ddrb,register
 
-			ldi temp0,$0A	;una vez hecho esto, cargamos un 10($0a) para indicar que estos se activaran por transicion negativa
-			sts EICRA,temp0	;y los seteamos en el registro de interrupciones externas (eicra)
+			ldi register,$0C			;Pero configuramos las resistencias internas de pull-up del puerto D
+			out portd,register			;Esto hara que esten en ALTO para poder enviar un cero y que este sea leido
 
-			ldi temp0,$03	;por ultimo configuramos la mascara para detectar las interrupciones
-			sts EIMSK,temp0	;y lo seteamos en el registro 
+			ldi register,$0A			;Ahora activamos las interrupciones externas, configurandolas como cambio de nivel logico
+			sts EICRA,register			;Y las enviamos al registro EICRA
 
-			sei				;activamos las interrupciones
-			clr temp0	;y limpiamos el registro 
+			ldi register,$03			;Por ultimo activamos los pines de las interrupciones correspondientes al pin PD2(4) y PD3(5)
+			out EIMSK,register		
+			sei							;Por ultimo, activamos las interrupciones globales
+				
+//----------------------------------------------------------------------
 ;PARTE C(2):
-ciclo:
-	out portb,temp0		;en este loop, siempre se muestra un cero ($00) pero...
-	rjmp ciclo
-
-COUNT:					;hasta que no se active la direccion del vector count, podemos aumentar este registro en 1 (ve a la parte B(2))
-	inc temp0
-	reti
+main:
+	out portb,num		;en este loop, siempre se muestra un cero ($00) pero...Ve a PARTE B(2)
+	rjmp main			
+;PARTE C(3):
+COUNT:
+	rcall retardo		;Nos manda aqui para activar una funcion de retardo				
+	inc	num				;Y realiza un incremento
+	reti				;Finalmente, descativa la interrupcion, regresando al main
 
 DECOUNT:
-	dec temp0			;o podemos decrementar este registro
-	reti				;En cualquier caso, reti sirve para deshabilitar interrupciones para regresar al codigo principal (direccion 0x00)
-	;Para reactivarlas y que el codigo funcione siempre asi.
-
-			
+	rcall retardo
+	dec num			
+	reti
+						
+retardo:
+; -----------------------------	Aqui nos genera un retardo de 250uS para impedir interrupciones multiples
+	; delaying 250,000 cycles:
+			  ldi  R20, $A7
+	WGLOOP0:  ldi  R21, $02
+	WGLOOP1:  ldi  R22, $F8
+	WGLOOP2:  dec  R22
+			  brne WGLOOP2
+			  dec  R21
+			  brne WGLOOP1
+			  dec  R20
+			  brne WGLOOP0
+			  nop
+			  ret			;Al final, nos retorna a la instruccion donde fue llamada
+; ----------------------------- 

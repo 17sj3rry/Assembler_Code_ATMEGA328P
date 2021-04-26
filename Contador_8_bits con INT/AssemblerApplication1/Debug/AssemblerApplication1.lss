@@ -1,12 +1,10 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Sun Apr 25 12:03:55 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador_8_bits con INT\AssemblerApplication1\main.asm Sun Apr 25 20:03:16 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
-C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
-C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328pdef.inc'
                                  
-                                 .include "m328pdef.inc"
+                                 ;-----------------------------------------------------------------------------
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
                                  ;*************************************************************************
@@ -987,105 +985,74 @@ C:\Users\pablo\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplica
                                  
                                  ; ***** END OF FILE ******************************************************
                                  
-                                 
-                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega328P.xml **********
-                                 ;*************************************************************************
-                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
-                                 ;* 
-                                 ;* Number            : AVR000
-                                 ;* File Name         : "m328Pdef.inc"
-                                 ;* Title             : Register/Bit Definitions for the ATmega328P
-                                 ;* Date              : 2011-02-09
-                                 ;* Version           : 2.35
-                                 ;* Support E-mail    : avr@atmel.com
-                                 ;* Target MCU        : ATmega328P
-                                 ;* 
-                                 ;* DESCRIPTION
-                                 ;* When including this file in the assembly program file, all I/O register 
-                                 ;* names and I/O register bit names appearing in the data book can be used.
-                                 ;* In addition, the six registers forming the three data pointers X, Y and 
-                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
-                                 ;* SRAM is also defined 
-                                 ;* 
-                                 ;* The Register names are represented by their hexadecimal address.
-                                 ;* 
-                                 ;* The Register Bit names are represented by their bit number (0-7).
-                                 ;* 
-                                 ;* Please observe the difference in using the bit names with instructions
-                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
-                                 ;* (skip if bit in register set/cleared). The following example illustrates
-                                 ;* this:
-                                 ;* 
-                                 ;* in    r16,PORTB             ;read PORTB latch
-                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
-                                 ;* out   PORTB,r16             ;output to PORTB
-                                 ;* 
-                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
-                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
-                                 ;* rjmp  TOV0_is_set           ;jump if set
-                                 ;* ...                         ;otherwise do something else
-                                 ;*************************************************************************
-                                 
-                                 #ifndef _M328PDEF_INC_
-                                 #endif  /* _M328PDEF_INC_ */
-                                 
-                                 ; ***** END OF FILE ******************************************************
-                                 
                                  ;-----------------------------------------------------------------------------
-                                 ;PARTE A(1):
-                                 .def temp0 = R16	;Definimos una variable para almacenar nuestra informacion global
-                                 
-                                 ;-----------------------------------------------------------------------------
-                                 
+                                 .def register = r16
+                                 .def num = r17
                                  ;-----------------------------------------------------------------------------
                                  ;PARTE B(1):
                                  .org $00
-000000 940c 0034                             jmp SETUP	;Vamos a declarar una primera direccion a donde el programa vaya para la ejecuccion
-                                 			;Continua hasta la parte C(1).
+000000 940c 0006                  jmp SETUP	;Vamos a declarar una primera direccion a donde el programa vaya para la ejecuccion
+                                 						;Continua hasta la parte C(1).
                                  ;-----------------------------------------------------------------------------
                                  ;PARTE B(2):
-                                 .org $02
-000002 940c 0046                             jmp COUNT	;Nos mandara aqui, y de aqui, saltamos al proceso count
+                                 .org $02	;Cuando presionamos la interrupciones, nos envia aqui, para leer el vector de direcciones y decidir hacia que instruccion irse
+000002 940c 0016                 jmp COUNT	;Nos mandara aqui, y de aqui, saltamos al proceso count...Ve a PARTE C(3)
+                                 
                                  .org $04
-000004 940c 0048                             jmp DECOUNT ; o nos vamos al proceso de decount
-                                 .org $34	;ignora esto y regresa a C(2)
+000004 940c 0019                 jmp DECOUNT ; o nos vamos al proceso de decount
                                  ;-----------------------------------------------------------------------------
                                  
                                  ;-----------------------------------------------------------------------------
                                  ;PARTE C(1):
-000034 ef0f                      SETUP:      ldi temp0, low(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
-000035 bf0d                                  out SPL, temp0
-000036 e008                                  ldi temp0, high(RAMEND)
-000037 bf0e                                  out SPH, temp0      
+000006 e008                      SETUP:      ldi register, high(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
+000007 bf0e                                  out SPH, register
+000008 ef0f                                  ldi register, low(RAMEND)
+000009 bf0d                                  out SPL, register    
                                  
-000038 b904                      			out ddrb,temp0	;En esta parte configuramos los puertos, aqui declaramos como entrada el puerto B
-000039 e00c                      			ldi temp0,$0C	;Pero cargamos un 12($0c) para los botones de interrupticones
-00003a b904                      			out ddrb,temp0	;le enviamos esta informacion al puerto D
-00003b b90b                      			out portd,temp0	;y configuramos en alto los mismos
+00000a ef0f                      			ldi register,$FF			;Vamos a configurar el puerto B como salida de datos, enviando 0XFF($FF)
+00000b b904                      			out ddrb,register
                                  
-00003c e00a                      			ldi temp0,$0A	;una vez hecho esto, cargamos un 10($0a) para indicar que estos se activaran por transicion negativa
-00003d 9300 0069                 			sts EICRA,temp0	;y los seteamos en el registro de interrupciones externas (eicra)
+00000c e00c                      			ldi register,$0C			;Pero configuramos las resistencias internas de pull-up del puerto D
+00000d b90b                      			out portd,register			;Esto hara que esten en ALTO para poder enviar un cero y que este sea leido
                                  
-00003f e003                      			ldi temp0,$03	;por ultimo configuramos la mascara para detectar las interrupciones
-000040 9300 001d                 			sts EIMSK,temp0	;y lo seteamos en el registro 
+00000e e00a                      			ldi register,$0A			;Ahora activamos las interrupciones externas, configurandolas como cambio de nivel logico
+00000f 9300 0069                 			sts EICRA,register			;Y las enviamos al registro EICRA
                                  
-000042 9478                      			sei				;activamos las interrupciones
-000043 2700                      			clr temp0	;y limpiamos el registro 
+000011 e003                      			ldi register,$03			;Por ultimo activamos los pines de las interrupciones correspondientes al pin PD2(4) y PD3(5)
+000012 bb0d                      			out EIMSK,register		
+000013 9478                      			sei							;Por ultimo, activamos las interrupciones globales
+                                 				
+                                 //----------------------------------------------------------------------
                                  ;PARTE C(2):
-                                 ciclo:
-000044 b905                      	out portb,temp0		;en este loop, siempre se muestra un cero ($00) pero...
-000045 cffe                      	rjmp ciclo
-                                 
-                                 COUNT:					;hasta que no se active la direccion del vector count, podemos aumentar este registro en 1 (ve a la parte B(2))
-000046 9503                      	inc temp0
-000047 9518                      	reti
+                                 main:
+000014 b915                      	out portb,num		;en este loop, siempre se muestra un cero ($00) pero...Ve a PARTE B(2)
+000015 cffe                      	rjmp main			
+                                 ;PARTE C(3):
+                                 COUNT:
+000016 d005                      	rcall retardo		;Nos manda aqui para activar una funcion de retardo				
+000017 9513                      	inc	num				;Y realiza un incremento
+000018 9518                      	reti				;Finalmente, descativa la interrupcion, regresando al main
                                  
                                  DECOUNT:
-000048 950a                      	dec temp0			;o podemos decrementar este registro
-000049 9518                      	reti				;En cualquier caso, reti sirve para deshabilitar interrupciones para regresar al codigo principal (direccion 0x00)
-                                 	;Para reactivarlas y que el codigo funcione siempre asi.
-                                 
-                                 			
+000019 d002                      	rcall retardo
+00001a 951a                      	dec num			
+00001b 9518                      	reti
+                                 						
+                                 retardo:
+                                 ; -----------------------------	Aqui nos genera un retardo de 250uS para impedir interrupciones multiples
+                                 	; delaying 250,000 cycles:
+00001c ea47                      			  ldi  R20, $A7
+00001d e052                      	WGLOOP0:  ldi  R21, $02
+00001e ef68                      	WGLOOP1:  ldi  R22, $F8
+00001f 956a                      	WGLOOP2:  dec  R22
+000020 f7f1                      			  brne WGLOOP2
+000021 955a                      			  dec  R21
+000022 f7d9                      			  brne WGLOOP1
+000023 954a                      			  dec  R20
+000024 f7c1                      			  brne WGLOOP0
+000025 0000                      			  nop
+000026 9508                      			  ret			;Al final, nos retorna a la instruccion donde fue llamada
+                                 ; ----------------------------- 
 
 
 RESOURCE USE INFORMATION
@@ -1105,37 +1072,37 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  16 r17:   0 r18:   0 r19:   0 r20:   0 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  12 r17:   3 r18:   0 r19:   0 r20:   2 
+r21:   2 r22:   2 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 1 out of 35 (2.9%)
+Registers used: 5 out of 35 (14.3%)
 
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :   0 cpse  :   0 dec   :   4 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   1 jmp   :   3 
-ld    :   0 ldd   :   0 ldi   :   5 lds   :   0 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :   9 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   6 pop   :   0 
-push  :   0 rcall :   0 ret   :   0 reti  :   2 rjmp  :   1 rol   :   0 
+neg   :   0 nop   :   1 or    :   0 ori   :   0 out   :   6 pop   :   0 
+push  :   0 rcall :   2 ret   :   1 reti  :   2 rjmp  :   1 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   1 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
-sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   2 
+sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   1 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 10 out of 113 (8.8%)
+Instructions used: 13 out of 113 (11.5%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000094     56      0     56   32768   0.2%
+[.cseg] 0x000000 0x00004e     78      0     78   32768   0.2%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
