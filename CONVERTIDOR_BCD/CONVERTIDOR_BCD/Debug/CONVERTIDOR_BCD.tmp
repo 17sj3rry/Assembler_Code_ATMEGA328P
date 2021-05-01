@@ -1,19 +1,18 @@
-<<<<<<< HEAD
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug\CONVERTIDOR_BCD.obj</FILE>
+  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug\CONVERTIDOR_BCD.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>CONVERTIDOR_BCD.hex</FILE>
@@ -23,53 +22,16 @@
   <FILE>CONVERTIDOR_BCD.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>31</LINE></SETUP>
-  <Decod><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>48</LINE></Decod>
-  <cent><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>50</LINE></cent>
-  <dec_cent><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>51</LINE></dec_cent>
-  <decen><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>56</LINE></decen>
-  <dec_dec><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>58</LINE></dec_dec>
-  <unis><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>66</LINE></unis>
-  <delay><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>94</LINE></delay>
-  <WGLOOP0><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>97</LINE></WGLOOP0>
-  <WGLOOP1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>98</LINE></WGLOOP1>
+  <SETUP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>31</LINE></SETUP>
+  <Decod><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>50</LINE></Decod>
+  <cent><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>56</LINE></cent>
+  <dec_cent><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>57</LINE></dec_cent>
+  <decen><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>62</LINE></decen>
+  <dec_dec><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>64</LINE></dec_dec>
+  <unis><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>73</LINE></unis>
+  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>103</LINE></delay>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>106</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>107</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>108</LINE></WGLOOP2>
  </LABELS>
 </ASSEMBLER_INFO>
-=======
-<ASSEMBLER_INFO>
- <VERSION>2.2.8</VERSION>
- <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug</WORKING_DIR>
- <INCLUDE_PATH>
-  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
-  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
-  <DIR></DIR>
- </INCLUDE_PATH>
- <SOURCE_FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</SOURCE_FILE>
- <INCLUDED_FILES>
-  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
- </INCLUDED_FILES>
- <OBJECT_FILES>
-  <FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\Debug\CONVERTIDOR_BCD.obj</FILE>
- </OBJECT_FILES>
- <HEX_FILES>
-  <FILE>CONVERTIDOR_BCD.hex</FILE>
- </HEX_FILES>
- <OUTPUT_FILES>
-  <FILE>CONVERTIDOR_BCD.map</FILE>
-  <FILE>CONVERTIDOR_BCD.lss</FILE>
- </OUTPUT_FILES>
- <LABELS>
-  <SETUP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>31</LINE></SETUP>
-  <Decod><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>48</LINE></Decod>
-  <cent><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>50</LINE></cent>
-  <dec_cent><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>51</LINE></dec_cent>
-  <decen><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>56</LINE></decen>
-  <dec_dec><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>58</LINE></dec_dec>
-  <unis><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>66</LINE></unis>
-  <delay><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>94</LINE></delay>
-  <WGLOOP0><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>97</LINE></WGLOOP0>
-  <WGLOOP1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>98</LINE></WGLOOP1>
- </LABELS>
-</ASSEMBLER_INFO>
->>>>>>> a1ec6f697a80f8ee32f159086fd026e865ad3949
