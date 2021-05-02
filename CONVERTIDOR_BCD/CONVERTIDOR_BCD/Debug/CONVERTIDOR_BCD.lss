@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 20:35:31 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 23:17:14 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1110,24 +1110,24 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000044 3000                      	cpi register,$00
 000045 f009                      	breq convcero
 000046 c002                      	rjmp uno
-                                 convcero:
-000047 e70e                      	ldi register,$7E
+                                 convcero:			;CATODO			ANODO 
+000047 e001                      	ldi register,$01;01              ; 7E
 000048 9508                      	ret
                                  
                                  uno:
-000049 3001                      	cpi register,$01
+000049 3001                      	cpi register,$01				
 00004a f009                      	breq convuno
 00004b c002                      	rjmp dos
-                                 convuno:
-00004c e300                      	ldi register,$30
+                                 convuno:		
+00004c e40f                      	ldi register,$4F;4F				;30
 00004d 9508                      	ret
                                  
                                  dos:
 00004e 3002                      	cpi register,$02
 00004f f009                      	breq convdos
 000050 c002                      	rjmp tres
-                                 convdos:
-000051 e60d                      	ldi register,$6D
+                                 convdos:		
+000051 e102                      	ldi register,$12;12				;6D
 000052 9508                      	ret
                                  
                                  tres:
@@ -1135,7 +1135,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000054 f009                      	breq convtres
 000055 c002                      	rjmp cuatro
                                  convtres:
-000056 e709                      	ldi register,$79
+000056 e006                      	ldi register,$06;06				;79
 000057 9508                      	ret
                                  
                                  cuatro:
@@ -1143,7 +1143,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000059 f009                      	breq convcuatro
 00005a c002                      	rjmp cinco
                                  convcuatro:
-00005b e303                      	ldi register,$33
+00005b e40c                      	ldi register,$4C;4C				;33
 00005c 9508                      	ret
                                  
                                  cinco:
@@ -1151,7 +1151,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 00005e f009                      	breq convcinco
 00005f c002                      	rjmp seis
                                  convcinco:
-000060 e50b                      	ldi register,$5B
+000060 e204                      	ldi register,$24;24				;5B
 000061 9508                      	ret
                                  
                                  seis:
@@ -1159,7 +1159,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000063 f009                      	breq convseis
 000064 c002                      	rjmp siete
                                  convseis:
-000065 e10f                      	ldi register,$1F
+000065 e600                      	ldi register,$60;1F				;1F
 000066 9508                      	ret
                                  
                                  siete:
@@ -1167,7 +1167,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000068 f009                      	breq convsiete
 000069 c002                      	rjmp ocho
                                  convsiete:
-00006a e700                      	ldi register,$70
+00006a e00f                      	ldi register,$0F;0F				;70
 00006b 9508                      	ret
                                  
                                  ocho:
@@ -1175,7 +1175,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 00006d f009                      	breq convocho
 00006e c002                      	rjmp nueve
                                  convocho:
-00006f e70f                      	ldi register,$7F
+00006f e000                      	ldi register,$00;00				;7F
 000070 9508                      	ret
                                  
                                  nueve:
@@ -1183,7 +1183,7 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
 000072 f009                      	breq convnueve
 000073 c002                      	rjmp salir
                                  convnueve:
-000074 e703                      	ldi register,$73
+000074 e00c                      	ldi register,$0C;0C				;73
 000075 9508                      	ret
                                  
                                  salir:

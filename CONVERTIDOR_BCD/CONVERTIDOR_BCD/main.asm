@@ -124,24 +124,24 @@ cero:
 	cpi register,$00
 	breq convcero
 	rjmp uno
-convcero:
-	ldi register,$7E
+convcero:			;CATODO			ANODO 
+	ldi register,$01;01              ; 7E
 	ret
 
 uno:
-	cpi register,$01
+	cpi register,$01				
 	breq convuno
 	rjmp dos
-convuno:
-	ldi register,$30
+convuno:		
+	ldi register,$4F;4F				;30
 	ret
 
 dos:
 	cpi register,$02
 	breq convdos
 	rjmp tres
-convdos:
-	ldi register,$6D
+convdos:		
+	ldi register,$12;12				;6D
 	ret
 
 tres:
@@ -149,7 +149,7 @@ tres:
 	breq convtres
 	rjmp cuatro
 convtres:
-	ldi register,$79
+	ldi register,$06;06				;79
 	ret
 
 cuatro:
@@ -157,7 +157,7 @@ cuatro:
 	breq convcuatro
 	rjmp cinco
 convcuatro:
-	ldi register,$33
+	ldi register,$4C;4C				;33
 	ret
 
 cinco:
@@ -165,7 +165,7 @@ cinco:
 	breq convcinco
 	rjmp seis
 convcinco:
-	ldi register,$5B
+	ldi register,$24;24				;5B
 	ret
 
 seis:
@@ -173,7 +173,7 @@ seis:
 	breq convseis
 	rjmp siete
 convseis:
-	ldi register,$1F
+	ldi register,$60;1F				;1F
 	ret
 
 siete:
@@ -181,7 +181,7 @@ siete:
 	breq convsiete
 	rjmp ocho
 convsiete:
-	ldi register,$70
+	ldi register,$0F;0F				;70
 	ret
 
 ocho:
@@ -189,7 +189,7 @@ ocho:
 	breq convocho
 	rjmp nueve
 convocho:
-	ldi register,$7F
+	ldi register,$00;00				;7F
 	ret
 
 nueve:
@@ -197,7 +197,7 @@ nueve:
 	breq convnueve
 	rjmp salir
 convnueve:
-	ldi register,$73
+	ldi register,$0C;0C				;73
 	ret
 
 salir:
