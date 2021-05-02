@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 16:57:48 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 20:35:31 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1059,45 +1059,136 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CON
                                    unis:
                                    		
 00001d 0f02                      		add register,decenas
+                                 
 00001e 9300 0100                 		sts $100,register
 000020 9350 0101                 		sts $101,cont_dec
 000022 9340 0102                 		sts $102,cont_cen
                                  
+                                 Output:
 000024 9100 0102                 		lds register,$102
-000026 b90b                      		out portd,register
-000027 e071                      		ldi Q_show,$01
-000028 b978                      		out portc,Q_show
-000029 d00d                      		rcall delay
+000026 d01d                      		rcall binBCD
+000027 b90b                      		out portd,register
+000028 e071                      		ldi Q_show,$01
+000029 b978                      		out portc,Q_show
+00002a d00f                      		rcall delay
                                  
-00002a 9100 0101                 		lds register,$101
-00002c b90b                      		out portd,register
-00002d e072                      		ldi Q_show,$02
-00002e b978                      		out portc,Q_show
-00002f d007                      		rcall delay
+00002b 9100 0101                 		lds register,$101
+00002d d016                      		rcall binBCD
+00002e b90b                      		out portd,register
+00002f e072                      		ldi Q_show,$02
+000030 b978                      		out portc,Q_show
+000031 d008                      		rcall delay
                                  
-000030 9100 0100                 		lds register,$100
-000032 b90b                      		out portd,register
-000033 e074                      		ldi Q_show,$04
-000034 b978                      		out portc,Q_show
-000035 d001                      		rcall delay
+000032 9100 0100                 		lds register,$100
+000034 d00f                      		rcall binBCD
+000035 b90b                      		out portd,register
+000036 e074                      		ldi Q_show,$04
+000037 b978                      		out portc,Q_show
+000038 d001                      		rcall delay
                                  
                                  
-000036 cfd5                      		rjmp Decod
+000039 cfd2                      		rjmp Decod
                                  //-------------------------------------------------------------
                                  //               ZONA DE DELAY
                                  //-------------------------------------------------------------
                                  delay:
                                  ; delaying 199998 cycles:
-000037 e011                                ldi  R17, $01;06
-000038 e021                      WGLOOP0:  ldi  R18, $01;37
-000039 e031                      WGLOOP1:  ldi  R19, $01;c9
-00003a 953a                      WGLOOP2:  dec  R19
-00003b f7f1                                brne WGLOOP2
-00003c 952a                                dec  R18
-00003d f7d9                                brne WGLOOP1
-00003e 951a                                dec  R17
-00003f f7c1                                brne WGLOOP0
-000040 9508                      		  RET				;Retornamos a la funcion donde nos quedamos
+00003a e016                                ldi  R17, $06;06
+00003b e127                      WGLOOP0:  ldi  R18, $17;37
+00003c e139                      WGLOOP1:  ldi  R19, $19;c9
+00003d 953a                      WGLOOP2:  dec  R19
+00003e f7f1                                brne WGLOOP2
+00003f 952a                                dec  R18
+000040 f7d9                                brne WGLOOP1
+000041 951a                                dec  R17
+000042 f7c1                                brne WGLOOP0
+000043 9508                      		  RET				;Retornamos a la funcion donde nos quedamos
+                                 
+                                 
+                                 binBCD:
+                                 cero:
+000044 3000                      	cpi register,$00
+000045 f009                      	breq convcero
+000046 c002                      	rjmp uno
+                                 convcero:
+000047 e70e                      	ldi register,$7E
+000048 9508                      	ret
+                                 
+                                 uno:
+000049 3001                      	cpi register,$01
+00004a f009                      	breq convuno
+00004b c002                      	rjmp dos
+                                 convuno:
+00004c e300                      	ldi register,$30
+00004d 9508                      	ret
+                                 
+                                 dos:
+00004e 3002                      	cpi register,$02
+00004f f009                      	breq convdos
+000050 c002                      	rjmp tres
+                                 convdos:
+000051 e60d                      	ldi register,$6D
+000052 9508                      	ret
+                                 
+                                 tres:
+000053 3003                      	cpi register,$03
+000054 f009                      	breq convtres
+000055 c002                      	rjmp cuatro
+                                 convtres:
+000056 e709                      	ldi register,$79
+000057 9508                      	ret
+                                 
+                                 cuatro:
+000058 3004                      	cpi register,$04
+000059 f009                      	breq convcuatro
+00005a c002                      	rjmp cinco
+                                 convcuatro:
+00005b e303                      	ldi register,$33
+00005c 9508                      	ret
+                                 
+                                 cinco:
+00005d 3005                      	cpi register,$05
+00005e f009                      	breq convcinco
+00005f c002                      	rjmp seis
+                                 convcinco:
+000060 e50b                      	ldi register,$5B
+000061 9508                      	ret
+                                 
+                                 seis:
+000062 3006                      	cpi register,$06
+000063 f009                      	breq convseis
+000064 c002                      	rjmp siete
+                                 convseis:
+000065 e10f                      	ldi register,$1F
+000066 9508                      	ret
+                                 
+                                 siete:
+000067 3007                      	cpi register,$07
+000068 f009                      	breq convsiete
+000069 c002                      	rjmp ocho
+                                 convsiete:
+00006a e700                      	ldi register,$70
+00006b 9508                      	ret
+                                 
+                                 ocho:
+00006c 3008                      	cpi register,$08
+00006d f009                      	breq convocho
+00006e c002                      	rjmp nueve
+                                 convocho:
+00006f e70f                      	ldi register,$7F
+000070 9508                      	ret
+                                 
+                                 nueve:
+000071 3009                      	cpi register,$09
+000072 f009                      	breq convnueve
+000073 c002                      	rjmp salir
+                                 convnueve:
+000074 e703                      	ldi register,$73
+000075 9508                      	ret
+                                 
+                                 salir:
+000076 9508                      	ret
+                                 	
                                  //-------------------------------------------------------------
                                  //              FIN DEL PROGRAMA
                                  //-------------------------------------------------------------
@@ -1120,7 +1211,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  23 r17:   5 r18:   5 r19:   2 r20:   3 
+r13:   0 r14:   0 r15:   0 r16:  43 r17:   5 r18:   5 r19:   2 r20:   3 
 r21:   3 r22:   0 r23:   6 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 7 out of 35 (20.0%)
@@ -1128,29 +1219,29 @@ Registers used: 7 out of 35 (20.0%)
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :  10 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   2 brlt  :   0 brmi  :   0 
 brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   3 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :  10 cpse  :   0 dec   :   3 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   2 jmp   :   3 
-ld    :   0 ldd   :   0 ldi   :  13 lds   :   3 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  23 lds   :   3 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :  11 pop   :   0 
-push  :   0 rcall :   3 ret   :   1 reti  :   0 rjmp  :   1 rol   :   0 
+push  :   0 rcall :   6 ret   :  12 reti  :   0 rjmp  :  11 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   3 
 sub   :   2 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 16 out of 113 (14.2%)
+Instructions used: 18 out of 113 (15.9%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000082    130      0    130   32768   0.4%
+[.cseg] 0x000000 0x0000ee    238      0    238   32768   0.7%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

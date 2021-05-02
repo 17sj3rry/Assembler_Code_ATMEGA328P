@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 16:57:48 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm Sat May 01 20:35:31 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -708,7 +708,30 @@ CSEG dec_cent     00000012
 CSEG decen        00000017
 CSEG dec_dec      00000018
 CSEG unis         0000001d
-CSEG delay        00000037
-CSEG WGLOOP0      00000038
-CSEG WGLOOP1      00000039
-CSEG WGLOOP2      0000003a
+CSEG Output       00000024
+CSEG binBCD       00000044
+CSEG delay        0000003a
+CSEG WGLOOP0      0000003b
+CSEG WGLOOP1      0000003c
+CSEG WGLOOP2      0000003d
+CSEG cero         00000044
+CSEG convcero     00000047
+CSEG uno          00000049
+CSEG convuno      0000004c
+CSEG dos          0000004e
+CSEG convdos      00000051
+CSEG tres         00000053
+CSEG convtres     00000056
+CSEG cuatro       00000058
+CSEG convcuatro   0000005b
+CSEG cinco        0000005d
+CSEG convcinco    00000060
+CSEG seis         00000062
+CSEG convseis     00000065
+CSEG siete        00000067
+CSEG convsiete    0000006a
+CSEG ocho         0000006c
+CSEG convocho     0000006f
+CSEG nueve        00000071
+CSEG convnueve    00000074
+CSEG salir        00000076

@@ -29,9 +29,32 @@
   <decen><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>62</LINE></decen>
   <dec_dec><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>64</LINE></dec_dec>
   <unis><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>73</LINE></unis>
-  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>103</LINE></delay>
-  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>106</LINE></WGLOOP0>
-  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>107</LINE></WGLOOP1>
-  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>108</LINE></WGLOOP2>
+  <Output><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>81</LINE></Output>
+  <binBCD><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>122</LINE></binBCD>
+  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>108</LINE></delay>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>111</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>112</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>113</LINE></WGLOOP2>
+  <cero><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>123</LINE></cero>
+  <convcero><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>127</LINE></convcero>
+  <uno><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>131</LINE></uno>
+  <convuno><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>135</LINE></convuno>
+  <dos><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>139</LINE></dos>
+  <convdos><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>143</LINE></convdos>
+  <tres><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>147</LINE></tres>
+  <convtres><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>151</LINE></convtres>
+  <cuatro><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>155</LINE></cuatro>
+  <convcuatro><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>159</LINE></convcuatro>
+  <cinco><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>163</LINE></cinco>
+  <convcinco><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>167</LINE></convcinco>
+  <seis><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>171</LINE></seis>
+  <convseis><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>175</LINE></convseis>
+  <siete><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>179</LINE></siete>
+  <convsiete><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>183</LINE></convsiete>
+  <ocho><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>187</LINE></ocho>
+  <convocho><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>191</LINE></convocho>
+  <nueve><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>195</LINE></nueve>
+  <convnueve><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>199</LINE></convnueve>
+  <salir><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\CONVERTIDOR_BCD\CONVERTIDOR_BCD\main.asm</FILE><LINE>203</LINE></salir>
  </LABELS>
 </ASSEMBLER_INFO>

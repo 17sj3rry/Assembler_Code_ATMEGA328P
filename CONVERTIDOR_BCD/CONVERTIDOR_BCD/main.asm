@@ -73,23 +73,28 @@ Decod:
   unis:
   		
 		add register,decenas
+
 		sts $100,register
 		sts $101,cont_dec
 		sts $102,cont_cen
 
+Output:
 		lds register,$102
+		rcall binBCD
 		out portd,register
 		ldi Q_show,$01
 		out portc,Q_show
 		rcall delay
 
 		lds register,$101
+		rcall binBCD
 		out portd,register
 		ldi Q_show,$02
 		out portc,Q_show
 		rcall delay
 
 		lds register,$100
+		rcall binBCD
 		out portd,register
 		ldi Q_show,$04
 		out portc,Q_show
@@ -102,9 +107,9 @@ Decod:
 //-------------------------------------------------------------
 delay:
 ; delaying 199998 cycles:
-          ldi  R17, $01;06
-WGLOOP0:  ldi  R18, $01;37
-WGLOOP1:  ldi  R19, $01;c9
+          ldi  R17, $06;06
+WGLOOP0:  ldi  R18, $17;37
+WGLOOP1:  ldi  R19, $19;c9
 WGLOOP2:  dec  R19
           brne WGLOOP2
           dec  R18
@@ -112,6 +117,92 @@ WGLOOP2:  dec  R19
           dec  R17
           brne WGLOOP0
 		  RET				;Retornamos a la funcion donde nos quedamos
+
+
+binBCD:
+cero:
+	cpi register,$00
+	breq convcero
+	rjmp uno
+convcero:
+	ldi register,$7E
+	ret
+
+uno:
+	cpi register,$01
+	breq convuno
+	rjmp dos
+convuno:
+	ldi register,$30
+	ret
+
+dos:
+	cpi register,$02
+	breq convdos
+	rjmp tres
+convdos:
+	ldi register,$6D
+	ret
+
+tres:
+	cpi register,$03
+	breq convtres
+	rjmp cuatro
+convtres:
+	ldi register,$79
+	ret
+
+cuatro:
+	cpi register,$04
+	breq convcuatro
+	rjmp cinco
+convcuatro:
+	ldi register,$33
+	ret
+
+cinco:
+	cpi register,$05
+	breq convcinco
+	rjmp seis
+convcinco:
+	ldi register,$5B
+	ret
+
+seis:
+	cpi register,$06
+	breq convseis
+	rjmp siete
+convseis:
+	ldi register,$1F
+	ret
+
+siete:
+	cpi register,$07
+	breq convsiete
+	rjmp ocho
+convsiete:
+	ldi register,$70
+	ret
+
+ocho:
+	cpi register,$08
+	breq convocho
+	rjmp nueve
+convocho:
+	ldi register,$7F
+	ret
+
+nueve:
+	cpi register,$09
+	breq convnueve
+	rjmp salir
+convnueve:
+	ldi register,$73
+	ret
+
+salir:
+	ret
+	
 //-------------------------------------------------------------
 //              FIN DEL PROGRAMA
 //-------------------------------------------------------------
