@@ -24,12 +24,15 @@
  <LABELS>
   <SETUP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>18</LINE></SETUP>
   <reset><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>30</LINE></reset>
-  <INT_CONT_1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>35</LINE></INT_CONT_1>
-  <COMP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>51</LINE></COMP>
-  <INT_CONT_2><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>39</LINE></INT_CONT_2>
-  <INT_CONT_3><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>43</LINE></INT_CONT_3>
-  <INT_CONT_4><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>47</LINE></INT_CONT_4>
-  <comp_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>76</LINE></comp_num>
-  <sacar_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>83</LINE></sacar_num>
+  <INT_CONT_1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>33</LINE></INT_CONT_1>
+  <COMP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>49</LINE></COMP>
+  <INT_CONT_2><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>37</LINE></INT_CONT_2>
+  <INT_CONT_3><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>41</LINE></INT_CONT_3>
+  <INT_CONT_4><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>45</LINE></INT_CONT_4>
+  <comp_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>74</LINE></comp_num>
+  <delay><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>88</LINE></delay>
+  <sacar_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>84</LINE></sacar_num>
+  <WGLOOP0><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>91</LINE></WGLOOP0>
+  <WGLOOP1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>92</LINE></WGLOOP1>
  </LABELS>
 </ASSEMBLER_INFO>

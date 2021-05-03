@@ -21,16 +21,14 @@ SETUP:      ldi register, high(RAMEND)	;INICIAMOS EL APUNTADOR DE STACK
             out SPL, register    
 
 			ldi register,$0f
+			out portb,register
 			out ddrb,register
 
 			ldi register,$ff
 			out ddrd,register
-			out portb,register
 
 reset:
-		in register, pinb		//Primero leemos la entrada del puerto B
 		clr intento				//Limpiamos nuestra variable que nos indicara el numero que sacaremos
-		out portd,intento		//Y sacamos un cero a la salida, al final sabras porque
 
 INT_CONT_1:	
 		ldi r18,$0E				//Ahora cargamos el valor E, como no cambian solo se agrega una vez
@@ -75,7 +73,10 @@ COMP:
 
 comp_num:
 	add r17,r18
-	inc intento							//Aqui aumentamos el intento, para saber dos cosas: 1.- Que numero sacamos , 2.- Si pasamos a otra comparacion
+	inc intento	
+	out portb,r17
+	rcall delay
+	in register,pinb						//Aqui aumentamos el intento, para saber dos cosas: 1.- Que numero sacamos , 2.- Si pasamos a otra comparacion
 	cp register,r17						//Comparamos lo que hay en la entrada con lo que sumamos
 	breq sacar_num						//Y si es, pasaremos a expulsar el numero por el puerto D
 	ret
@@ -84,3 +85,12 @@ sacar_num:
 	out portd,intento					//Si logramos pasar, sacamos el numero por el puerto D, en formato binario
 	rjmp reset							//Hecho esto, reseteamos para leer nuevamente los numeros, por lo que una vez dejamos de presionar
 										//El programa limpia la salida automaticamente
+delay:
+	; delaying 99990 cycles:
+          ldi  R22, $cc
+WGLOOP0:  ldi  R21, $cc
+WGLOOP1:  dec  R21
+          brne WGLOOP1
+          dec  R22
+          brne WGLOOP0
+		  ret
