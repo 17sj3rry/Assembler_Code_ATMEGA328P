@@ -1,0 +1,35 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug\ENTRADA_MATRICIAL.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>ENTRADA_MATRICIAL.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>ENTRADA_MATRICIAL.map</FILE>
+  <FILE>ENTRADA_MATRICIAL.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <SETUP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>18</LINE></SETUP>
+  <reset><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>30</LINE></reset>
+  <INT_CONT_1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>35</LINE></INT_CONT_1>
+  <COMP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>51</LINE></COMP>
+  <INT_CONT_2><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>39</LINE></INT_CONT_2>
+  <INT_CONT_3><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>43</LINE></INT_CONT_3>
+  <INT_CONT_4><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>47</LINE></INT_CONT_4>
+  <comp_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>76</LINE></comp_num>
+  <sacar_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>83</LINE></sacar_num>
+ </LABELS>
+</ASSEMBLER_INFO>
