@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.8</VERSION>
  <DEVICE>"ATmega328P"</DEVICE>
- <WORKING_DIR>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug\ENTRADA_MATRICIAL.obj</FILE>
+  <FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\Debug\ENTRADA_MATRICIAL.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>ENTRADA_MATRICIAL.hex</FILE>
@@ -22,17 +22,34 @@
   <FILE>ENTRADA_MATRICIAL.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>18</LINE></SETUP>
-  <reset><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>30</LINE></reset>
-  <INT_CONT_1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>33</LINE></INT_CONT_1>
-  <COMP><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>49</LINE></COMP>
-  <INT_CONT_2><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>37</LINE></INT_CONT_2>
-  <INT_CONT_3><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>41</LINE></INT_CONT_3>
-  <INT_CONT_4><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>45</LINE></INT_CONT_4>
-  <comp_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>74</LINE></comp_num>
-  <delay><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>88</LINE></delay>
-  <sacar_num><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>84</LINE></sacar_num>
-  <WGLOOP0><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>91</LINE></WGLOOP0>
-  <WGLOOP1><FILE>c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>92</LINE></WGLOOP1>
+  <SETUP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>26</LINE></SETUP>
+  <reset><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>41</LINE></reset>
+  <INT_CONT_1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>44</LINE></INT_CONT_1>
+  <COMP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>64</LINE></COMP>
+  <INT_CONT_2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>48</LINE></INT_CONT_2>
+  <INT_CONT_3><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>52</LINE></INT_CONT_3>
+  <INT_CONT_4><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>56</LINE></INT_CONT_4>
+  <comp_num><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>93</LINE></comp_num>
+  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>201</LINE></delay>
+  <sacar_num><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>106</LINE></sacar_num>
+  <uno><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>143</LINE></uno>
+  <dos><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>146</LINE></dos>
+  <tres><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>149</LINE></tres>
+  <WA><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>173</LINE></WA>
+  <cuatro><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>152</LINE></cuatro>
+  <cinco><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>155</LINE></cinco>
+  <seis><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>158</LINE></seis>
+  <WB><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>176</LINE></WB>
+  <siete><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>161</LINE></siete>
+  <ocho><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>164</LINE></ocho>
+  <nueve><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>167</LINE></nueve>
+  <WC><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>179</LINE></WC>
+  <asterisco><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>185</LINE></asterisco>
+  <cero><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>170</LINE></cero>
+  <gato><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>188</LINE></gato>
+  <WD><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>182</LINE></WD>
+  <out_portd><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>194</LINE></out_portd>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>204</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm</FILE><LINE>205</LINE></WGLOOP1>
  </LABELS>
 </ASSEMBLER_INFO>

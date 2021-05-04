@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm Mon May 03 16:48:00 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm Mon May 03 20:11:58 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -989,10 +989,18 @@ AVRASM ver. 2.2.8  c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\E
                                  ;
                                  ; Created: 03/05/2021 02:09:13 p. m.
                                  ; Author : pablo
+                                 //-------------------------------------------------------------
+                                 //              ZONA DE DEFINICIONES
+                                 //-------------------------------------------------------------
                                  
                                  .def register = r16	
                                  .def intento = r19
+                                 .def cons_sal = r18
+                                 .def cons_ent = r17
                                  
+                                 //-------------------------------------------------------------
+                                 //              ZONA DE VECTORES
+                                 //-------------------------------------------------------------
                                  .org $00
 000000 940c 0002                  jmp SETUP	;Vamos a declarar una primera direccion a donde el programa vaya para la ejecuccion
                                  						;Continua hasta la parte C(1).
@@ -1012,73 +1020,181 @@ AVRASM ver. 2.2.8  c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\E
                                  
 000009 ef0f                      			ldi register,$ff
 00000a b90a                      			out ddrd,register
+                                 //-------------------------------------------------------------
+                                 //              SENTENCIA PARA SABER DONDE SALE EL CERO
+                                 //-------------------------------------------------------------
                                  
                                  reset:
-00000b 2733                      		clr intento				//Limpiamos nuestra variable que nos indicara el numero que sacaremos
+00000b ef3f                      		ldi intento,$ff		//Limpiamos nuestra variable que nos indicara el numero que sacaremos, para que cuente desde cero			
                                  
                                  INT_CONT_1:	
-00000c e02e                      		ldi r18,$0E				//Ahora cargamos el valor E, como no cambian solo se agrega una vez
+00000c e02e                      		ldi cons_sal,$0E				//Ahora cargamos el valor E, como no cambian solo se agrega una vez|0000 1110|
 00000d c006                      		rjmp COMP			//y nos vamos a comparar por primera vez
                                  
                                  INT_CONT_2:		
-00000e e02d                      		ldi r18,$0D				//Ahora cargamos el valor D, como no cambian solo se agrega una vez
+00000e e02d                      		ldi cons_sal,$0D				//Ahora cargamos el valor D, como no cambian solo se agrega una vez|0000 11101|
 00000f c004                      		rjmp COMP			//y nos vamos a comparar por segunda vez
                                  
                                  INT_CONT_3:		
-000010 e02b                      		ldi r18,$0B				//Ahora cargamos el valor B, como no cambian solo se agrega una vez
+000010 e02b                      		ldi cons_sal,$0B				//Ahora cargamos el valor B, como no cambian solo se agrega una vez|0000 1011|
 000011 c002                      		rjmp COMP			//y nos vamos a comparar por tercera vez
                                  
                                  INT_CONT_4:		
-000012 e027                      		ldi r18,$07				//Ahora cargamos el valor 7, como no cambian solo se agrega una vez
+000012 e027                      		ldi cons_sal,$07				//Ahora cargamos el valor 7, como no cambian solo se agrega una vez|0000 0111|
 000013 c000                      		rjmp COMP			//y nos vamos a comparar por cuarta y ultima vez
                                  
+                                 //-------------------------------------------------------------
+                                 //      SENTENCIA PARA SABER POR QUE PUERTO ENTRA EL CERO
+                                 //-------------------------------------------------------------
+                                 
                                  COMP:
-000014 ee10                      		ldi r17,$E0				//Aqui podemos cargar el primer valor E de los pines en pull-up, solo porque el valor F, no es reconocido
+000014 ee10                      		ldi cons_ent,$E0				//Aqui podemos cargar el primer valor E de los pines en pull-up, solo porque el valor F, no es reconocido
 000015 d00e                      		rcall comp_num			//Y sumamos el valor constante de r18 con r17 para hacer la primera comparacion con la entrada, Vamos a la funcion que compara
-                                 
-000016 ed10                      		ldi r17,$D0
+                                 		;|1110 0000
+000016 ed10                      		ldi cons_ent,$D0
 000017 d00c                      		rcall comp_num
-                                 
-000018 eb10                      		ldi r17,$B0
+                                 		;|1101 0000
+000018 eb10                      		ldi cons_ent,$B0
 000019 d00a                      		rcall comp_num
-                                 
-00001a e710                      		ldi r17,$70
+                                 		;|1011 0000
+00001a e710                      		ldi cons_ent,$70
 00001b d008                      		rcall comp_num
+                                 		;|0111 0000
                                  
-00001c 3034                      		cpi intento,$04				//Si de plano, no agarro ningun valor, nos vamos a cargar otro valor para r18
+00001c 3033                      		cpi intento,$03				//Si de plano, no agarro ningun valor, nos vamos a cargar otro valor para r18
 00001d f381                      		breq INT_CONT_2				//Regresando a cargar, sumando en esta parte y asi hasta que agarre algo
                                  
-00001e 3038                      		cpi intento,$08
+00001e 3037                      		cpi intento,$07
 00001f f381                      		breq INT_CONT_3
                                  
-000020 303c                      		cpi intento,$0C
+000020 303b                      		cpi intento,$0B
 000021 f381                      		breq INT_CONT_4
                                  
-000022 3130                      		cpi intento,$10
+000022 303f                      		cpi intento,$0F
 000023 f339                      		breq reset					//Si despues de 16 intentos, no agarro nada, el programa resetea para leer desde el principio
+                                 //-------------------------------------------------------------
+                                 //              SENTENCIA PARA SABER QUE VALOR SE COMPARA
+                                 //-------------------------------------------------------------
                                  
                                  comp_num:
-000024 0f12                      	add r17,r18
+000024 0f12                      	add cons_ent,cons_sal
 000025 9533                      	inc intento	
-000026 b915                      	out portb,r17
-000027 d006                      	rcall delay
+000026 b915                      	out portb,cons_ent
+000027 d046                      	rcall delay
 000028 b103                      	in register,pinb						//Aqui aumentamos el intento, para saber dos cosas: 1.- Que numero sacamos , 2.- Si pasamos a otra comparacion
 000029 1701                      	cp register,r17						//Comparamos lo que hay en la entrada con lo que sumamos
 00002a f009                      	breq sacar_num						//Y si es, pasaremos a expulsar el numero por el puerto D
 00002b 9508                      	ret
                                  										//Caso contrario, nos regresaremos a hacer mas comparaciones
+                                 //-------------------------------------------------------------
+                                 //              SENTENCIA PARA USAR EL TECLADO MATRICIAL(CHORIZERO)
+                                 //-------------------------------------------------------------
                                  sacar_num:
-00002c b93b                      	out portd,intento					//Si logramos pasar, sacamos el numero por el puerto D, en formato binario
-00002d cfdd                      	rjmp reset							//Hecho esto, reseteamos para leer nuevamente los numeros, por lo que una vez dejamos de presionar
+00002c 3030                      	cpi intento,$00
+00002d f0f1                      	breq uno
+00002e 3031                      	cpi intento,$01
+00002f f0f1                      	breq dos
+000030 3032                      	cpi intento,$02
+000031 f0f1                      	breq tres
+000032 3033                      	cpi intento,$03
+000033 f161                      	breq WA
+                                 
+000034 3034                      	cpi intento,$04
+000035 f0e1                      	breq cuatro
+000036 3035                      	cpi intento,$05
+000037 f0e1                      	breq cinco
+000038 3036                      	cpi intento,$06
+000039 f0e1                      	breq seis
+00003a 3037                      	cpi intento,$07
+00003b f131                      	breq WB
+                                 
+00003c 3038                      	cpi intento,$08
+00003d f0d1                      	breq siete
+00003e 3039                      	cpi intento,$09
+00003f f0d1                      	breq ocho
+000040 303a                      	cpi intento,$0A
+000041 f0d1                      	breq nueve
+000042 303b                      	cpi intento,$0B
+000043 f101                      	breq WC
+                                 
+000044 303c                      	cpi intento,$0C
+000045 f111                      	breq asterisco
+000046 303d                      	cpi intento,$0D
+000047 f0b1                      	breq cero
+000048 303e                      	cpi intento,$0E
+000049 f101                      	breq gato
+00004a 303f                      	cpi intento,$0F
+00004b f0d1                      	breq WD
+                                 
+                                 uno:
+00004c e001                      	ldi register,$01
+00004d d01e                      	rcall out_portd
+                                 dos:
+00004e e002                      	ldi register,$02
+00004f d01c                      	rcall out_portd
+                                 tres:
+000050 e003                      	ldi register,$03
+000051 d01a                      	rcall out_portd
+                                 cuatro:
+000052 e004                      	ldi register,$04
+000053 d018                      	rcall out_portd
+                                 cinco:
+000054 e005                      	ldi register,$05
+000055 d016                      	rcall out_portd
+                                 seis:
+000056 e006                      	ldi register,$06
+000057 d014                      	rcall out_portd
+                                 siete:
+000058 e007                      	ldi register,$07
+000059 d012                      	rcall out_portd
+                                 ocho:
+00005a e008                      	ldi register,$08
+00005b d010                      	rcall out_portd
+                                 nueve:
+00005c e009                      	ldi register,$09
+00005d d00e                      	rcall out_portd
+                                 cero:
+00005e e000                      	ldi register,$00
+00005f d00c                      	rcall out_portd
+                                 WA:
+000060 e00a                      	ldi register,$0A
+000061 d00a                      	rcall out_portd
+                                 WB:
+000062 e00b                      	ldi register,$0B
+000063 d008                      	rcall out_portd
+                                 WC:
+000064 e00c                      	ldi register,$0C
+000065 d006                      	rcall out_portd
+                                 WD:
+000066 e00d                      	ldi register,$0D
+000067 d004                      	rcall out_portd
+                                 asterisco:
+000068 e00e                      	ldi register,$0E
+000069 d002                      	rcall out_portd
+                                 gato:
+00006a e00f                      	ldi register,$0f
+00006b d000                      	rcall out_portd
+                                 //-------------------------------------------------------------
+                                 //              SENTENCIA PARA SACAR EL VALOR 
+                                 //-------------------------------------------------------------
+                                 out_portd:
+00006c b90b                      	out portd,register					//Si logramos pasar, sacamos el numero por el puerto D, en formato binario
+00006d cf9d                      	rjmp reset							//Hecho esto, reseteamos para leer nuevamente los numeros, por lo que una vez dejamos de presionar
                                  										//El programa limpia la salida automaticamente
+                                 //-------------------------------------------------------------
+                                 //              SENTENCIA DE RETARDO
+                                 //-------------------------------------------------------------
                                  delay:
                                  	; delaying 99990 cycles:
-00002e ec6c                                ldi  R22, $cc
-00002f ec5c                      WGLOOP0:  ldi  R21, $cc
-000030 955a                      WGLOOP1:  dec  R21
-000031 f7f1                                brne WGLOOP1
-000032 956a                                dec  R22
-000033 f7d9                                brne WGLOOP0
+00006e e260                                ldi  R22, $20
+00006f e250                      WGLOOP0:  ldi  R21, $20
+000070 955a                      WGLOOP1:  dec  R21
+000071 f7f1                                brne WGLOOP1
+000072 956a                                dec  R22
+000073 f7d9                                brne WGLOOP0
+000074 9508                      		  ret
+                                 //-------------------------------------------------------------
+                                 //              FIN DEL CODIGO
 
 
 RESOURCE USE INFORMATION
@@ -1098,7 +1214,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  11 r17:   7 r18:   5 r19:   7 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:  28 r17:   7 r18:   5 r19:  22 r20:   0 
 r21:   2 r22:   2 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 6 out of 35 (17.1%)
@@ -1106,29 +1222,29 @@ Registers used: 6 out of 35 (17.1%)
 "ATmega328P" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   1 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   5 brge  :   0 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :  21 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   1 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   1 cpc   :   0 
-cpi   :   4 cpse  :   0 dec   :   2 eor   :   0 fmul  :   0 fmuls :   0 
+cpi   :  20 cpse  :   0 dec   :   2 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   1 jmp   :   1 
-ld    :   0 ldd   :   0 ldi   :  14 lds   :   0 lpm   :   0 lsl   :   0 
+ld    :   0 ldd   :   0 ldi   :  31 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   7 pop   :   0 
-push  :   0 rcall :   5 ret   :   2 reti  :   0 rjmp  :   5 rol   :   0 
+push  :   0 rcall :  21 ret   :   2 reti  :   0 rjmp  :   5 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 15 out of 113 (13.3%)
+Instructions used: 14 out of 113 (12.4%)
 
 "ATmega328P" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00006a    106      0    106   32768   0.3%
+[.cseg] 0x000000 0x0000ea    234      0    234   32768   0.7%
 [.dseg] 0x000100 0x000100      0      0      0    2048   0.0%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  c:\users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm Mon May 03 16:48:00 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\ENTRADA_MATRICIAL\ENTRADA_MATRICIAL\main.asm Mon May 03 20:11:58 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -697,6 +697,8 @@ EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
 DEF  register     r16
 DEF  intento      r19
+DEF  cons_sal     r18
+DEF  cons_ent     r17
 CSEG SETUP        00000002
 CSEG reset        0000000b
 CSEG INT_CONT_1   0000000c
@@ -705,7 +707,24 @@ CSEG INT_CONT_2   0000000e
 CSEG INT_CONT_3   00000010
 CSEG INT_CONT_4   00000012
 CSEG comp_num     00000024
-CSEG delay        0000002e
+CSEG delay        0000006e
 CSEG sacar_num    0000002c
-CSEG WGLOOP0      0000002f
-CSEG WGLOOP1      00000030
+CSEG uno          0000004c
+CSEG dos          0000004e
+CSEG tres         00000050
+CSEG WA           00000060
+CSEG cuatro       00000052
+CSEG cinco        00000054
+CSEG seis         00000056
+CSEG WB           00000062
+CSEG siete        00000058
+CSEG ocho         0000005a
+CSEG nueve        0000005c
+CSEG WC           00000064
+CSEG asterisco    00000068
+CSEG cero         0000005e
+CSEG gato         0000006a
+CSEG WD           00000066
+CSEG out_portd    0000006c
+CSEG WGLOOP0      0000006f
+CSEG WGLOOP1      00000070
