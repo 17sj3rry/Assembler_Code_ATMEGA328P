@@ -23,12 +23,12 @@
  </OUTPUT_FILES>
  <LABELS>
   <SETUP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>11</LINE></SETUP>
-  <LOOP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>24</LINE></LOOP>
-  <INCREMENTO><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>30</LINE></INCREMENTO>
+  <LOOP><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>25</LINE></LOOP>
+  <INCREMENTO><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>31</LINE></INCREMENTO>
   <DECREMENTO><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>36</LINE></DECREMENTO>
-  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>42</LINE></delay>
-  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>44</LINE></WGLOOP0>
-  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>45</LINE></WGLOOP1>
-  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>46</LINE></WGLOOP2>
+  <delay><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>41</LINE></delay>
+  <WGLOOP0><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>43</LINE></WGLOOP0>
+  <WGLOOP1><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>44</LINE></WGLOOP1>
+  <WGLOOP2><FILE>C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm</FILE><LINE>45</LINE></WGLOOP2>
  </LABELS>
 </ASSEMBLER_INFO>

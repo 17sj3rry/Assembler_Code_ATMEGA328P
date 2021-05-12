@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm Tue May 11 16:48:44 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm Wed May 12 09:34:37 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -696,9 +696,9 @@ EQU  TWIaddr      00000030
 EQU  SPMRaddr     00000032
 EQU  INT_VECTORS_SIZE 00000034
 CSEG SETUP        00000001
-CSEG LOOP         00000009
-CSEG INCREMENTO   0000000d
-CSEG DECREMENTO   00000011
+CSEG LOOP         0000000b
+CSEG INCREMENTO   0000000f
+CSEG DECREMENTO   00000012
 CSEG delay        00000015
 CSEG WGLOOP0      00000016
 CSEG WGLOOP1      00000017

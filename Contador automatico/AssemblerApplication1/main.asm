@@ -18,8 +18,9 @@ SETUP:
 	out ddrb,r16
 
 	ldi r16,$ff			;CONFIGURAR COMO SALIDA EL PUERTO D
-	out ddrd,r17
-
+	out ddrd,r16
+	clr r16				//limpiamos la lectura 
+	clr r20				//Limpiamos el conteo
 //-----------------------------------------------------
 		LOOP:
 			in r16,pinb		//Si el SW0 (o el pin PB0 o el PIN14 del atmega) esta en alto, que la cuenta sea ascendente
@@ -31,13 +32,11 @@ SETUP:
 			inc r20		//INC = INCREMENTAR | INCREMENTAMOS EN UNA UNIDAD 
 			out portd,r20
 			rcall delay		//Para poder observar el numero vamos a este delay
-			rjmp LOOP
 
 		DECREMENTO:
 			dec r20		//DEC = DECREMENTAR	| DECREMENTA EN UNA UNIDAD
 			out portd,r20
 			rcall delay		//Para poder observar el numero vamos a este delay
-			rjmp LOOP
 
 		delay:				//PARA RETRASAR UN SEGUNDO
 		  ldi  R17, $06;06
@@ -49,4 +48,4 @@ WGLOOP2:  dec  R19
           brne WGLOOP1
           dec  R17
           brne WGLOOP0
-		  RET	
+		  rjmp LOOP

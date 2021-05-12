@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm Tue May 11 16:48:44 2021
+AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico\AssemblerApplication1\main.asm Wed May 12 09:34:37 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m328Pdef.inc'
@@ -1004,26 +1004,25 @@ AVRASM ver. 2.2.8  C:\Users\pablo\Documents\Atmel Studio\7.0\Contador automatico
 000006 b904                      	out ddrb,r16
                                  
 000007 ef0f                      	ldi r16,$ff			;CONFIGURAR COMO SALIDA EL PUERTO D
-000008 b91a                      	out ddrd,r17
-                                 
+000008 b90a                      	out ddrd,r16
+000009 2700                      	clr r16				//limpiamos la lectura 
+00000a 2744                      	clr r20				//Limpiamos el conteo
                                  //-----------------------------------------------------
                                  		LOOP:
-000009 b103                      			in r16,pinb		//Si el SW0 (o el pin PB0 o el PIN14 del atmega) esta en alto, que la cuenta sea ascendente
-00000a 3001                      			cpi r16,$01		//$01 = 0000 0001 
-00000b f009                      			breq INCREMENTO	//Branch IF EQual = Relaciona si es igual
-00000c f421                      			brne DECREMENTO //Branch IF Not Equal = Relaciona si no es igual
+00000b b103                      			in r16,pinb		//Si el SW0 (o el pin PB0 o el PIN14 del atmega) esta en alto, que la cuenta sea ascendente
+00000c 3001                      			cpi r16,$01		//$01 = 0000 0001 
+00000d f009                      			breq INCREMENTO	//Branch IF EQual = Relaciona si es igual
+00000e f419                      			brne DECREMENTO //Branch IF Not Equal = Relaciona si no es igual
                                  
                                  		INCREMENTO:
-00000d 9543                      			inc r20		//INC = INCREMENTAR | INCREMENTAMOS EN UNA UNIDAD 
-00000e b94b                      			out portd,r20
-00000f d005                      			rcall delay		//Para poder observar el numero vamos a este delay
-000010 cff8                      			rjmp LOOP
+00000f 9543                      			inc r20		//INC = INCREMENTAR | INCREMENTAMOS EN UNA UNIDAD 
+000010 b94b                      			out portd,r20
+000011 d003                      			rcall delay		//Para poder observar el numero vamos a este delay
                                  
                                  		DECREMENTO:
-000011 954a                      			dec r20		//DEC = DECREMENTAR	| DECREMENTA EN UNA UNIDAD
-000012 b94b                      			out portd,r20
-000013 d001                      			rcall delay		//Para poder observar el numero vamos a este delay
-000014 cff4                      			rjmp LOOP
+000012 954a                      			dec r20		//DEC = DECREMENTAR	| DECREMENTA EN UNA UNIDAD
+000013 b94b                      			out portd,r20
+000014 d000                      			rcall delay		//Para poder observar el numero vamos a este delay
                                  
                                  		delay:				//PARA RETRASAR UN SEGUNDO
 000015 e016                      		  ldi  R17, $06;06
@@ -1054,7 +1053,7 @@ counted separately from r26..r31 here.
 "ATmega328P" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   9 r17:   3 r18:   2 r19:   2 r20:   4 
+r13:   0 r14:   0 r15:   0 r16:  11 r17:   2 r18:   2 r19:   2 r20:   5 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
 Registers used: 5 out of 35 (14.3%)
@@ -1066,14 +1065,14 @@ brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   4 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
-clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
+clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   2 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   1 cpse  :   0 dec   :   4 eor   :   0 fmul  :   0 fmuls :   0 
 fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   1 jmp   :   0 
 ld    :   0 ldd   :   0 ldi   :   7 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   6 pop   :   0 
-push  :   0 rcall :   2 ret   :   1 reti  :   0 rjmp  :   3 rol   :   0 
+push  :   0 rcall :   2 ret   :   0 reti  :   0 rjmp  :   2 rol   :   0 
 ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
