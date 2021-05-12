@@ -28,14 +28,14 @@ SETUP:
 			brne DECREMENTO //Branch IF Not Equal = Relaciona si no es igual
 
 		INCREMENTO:
-			inc r17			//INC = INCREMENTAR | INCREMENTAMOS EN UNA UNIDAD 
-			out portd,r17
+			inc r20		//INC = INCREMENTAR | INCREMENTAMOS EN UNA UNIDAD 
+			out portd,r20
 			rcall delay		//Para poder observar el numero vamos a este delay
 			rjmp LOOP
 
 		DECREMENTO:
-			dec r17			//DEC = DECREMENTAR	| DECREMENTA EN UNA UNIDAD
-			out portd,r17
+			dec r20		//DEC = DECREMENTAR	| DECREMENTA EN UNA UNIDAD
+			out portd,r20
 			rcall delay		//Para poder observar el numero vamos a este delay
 			rjmp LOOP
 
